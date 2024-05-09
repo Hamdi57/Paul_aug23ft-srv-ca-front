@@ -10,8 +10,8 @@ const ParticipantCard = ({ participant }) => {
         <div className="name-text">
           {participant.participant.firstName} {participant.participant.lastName}
         </div>
-        <div className="email-text">Email: {participant.email}</div>
       </div>
+      <div className="email-text">{participant.email}</div>
       {/* Add more details as needed */}
     </div>
   );

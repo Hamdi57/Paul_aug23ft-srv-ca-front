@@ -33,7 +33,17 @@ const ParticipantList = () => {
 
   return (
     <div>
-      <ul>{state.length > 0 ? state.map((participant) => <ParticipantCard key={participant.email} participant={participant} />) : <li className="loading">Loading...</li>}</ul>
+      <ul>
+        {state.length > 0 ? (
+          state.map((participant) => (
+            <li key={participant.email}>
+              <ParticipantCard participant={participant} />
+            </li>
+          ))
+        ) : (
+          <li className="loading">Loading...</li>
+        )}
+      </ul>
     </div>
   );
 };
