@@ -2,18 +2,22 @@ import PropTypes from "prop-types";
 import "./ButtonRow.css";
 const ButtonRow = (props) => {
   const buttonClickHandler = (event) => {
-    props.buttonHandlerTest(event);
+    props.buttonHandlerTest(event.target.getAttribute("data-type"));
   };
   return (
     <div className="button-row">
       <div className="button-group">
-        <div className="button" onClick={buttonClickHandler}>
+        <div className="button" data-type="fetch" onClick={buttonClickHandler}>
           Fetch Data
         </div>
-        <div className="button">Add Participant</div>
+        <div className="button" data-type="add" onClick={buttonClickHandler}>
+          Add Participant
+        </div>
       </div>
       <div className="button-group">
-        <div className="button">Add Dummy Data</div>
+        <div className="button" data-type="dummy" onClick={buttonClickHandler}>
+          Add Dummy Data
+        </div>
       </div>
     </div>
   );

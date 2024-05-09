@@ -1,21 +1,28 @@
-// import { useState, useEffect } from "react";
+import { useState } from "react";
+
 import "./App.css";
-// import SimpleForm from "./components/SimpleForm";
 import Header from "./components/Header";
 import ButtonRow from "./components/ButtonRow";
-// import dummyParticipants from "./data/dummyParticipants";
+import ParticipantList from "./components/ParticipantList";
 
 function App() {
-  // console.log("dummyParticipants: ", dummyParticipants);
-  const buttonHandler = (event) => {
-    console.log("Button clicked", event);
+  const [stateType, setStateType] = useState("new");
+  const buttonHandler = (type) => {
+    if (type === "fetch") setStateType("fetch");
+    if (type === "add") setStateType("add");
+    if (type === "dummy") setStateType("dummy");
+    console.log(stateType);
   };
+  let mainContent;
+  if (stateType === "fetch") mainContent = <ParticipantList />;
+  if (stateType === "add") mainContent = <div>Add</div>;
+  if (stateType === "dummy") mainContent = <div>Dummy</div>;
 
   return (
     <>
-      {/* <SimpleForm></SimpleForm> */}
       <Header />
       <ButtonRow buttonHandlerTest={buttonHandler} />
+      <div className="main-container">{mainContent}</div>
     </>
   );
 }
