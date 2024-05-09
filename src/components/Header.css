@@ -1,0 +1,13 @@
+.header-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 50px;
+  /* border: solid 1px #6a6a66; */
+  padding: 0.6rem 1.6rem;
+}
+.header-text {
+  font-size: 3rem;
+  color: #6a6a66;
+  margin: 0;
+}
