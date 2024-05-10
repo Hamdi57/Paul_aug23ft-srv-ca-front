@@ -8,7 +8,7 @@ const ButtonRow = (props) => {
     <div className="button-row">
       <div className="button-group">
         <div className="button" data-type="fetch" onClick={buttonClickHandler}>
-          Fetch Data
+          Show all participants
         </div>
         <div className="button" data-type="add" onClick={buttonClickHandler}>
           Add Participant

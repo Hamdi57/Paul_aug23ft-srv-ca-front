@@ -1,23 +1,70 @@
 import PropTypes from "prop-types";
+import { useState, useEffect } from "react";
 
 import "./ParticipantCard.css";
 
-const ParticipantCard = ({ participant }) => {
+const ParticipantCard = ({ participant, clickHandler, expanded, login }) => {
+  const [extendedData, setExtendedData] = useState();
+  useEffect(() => {
+    const fetchExtendedData = async () => {
+      console.log("test");
+      if (!expanded) return;
+      try {
+        const basicAuth = btoa(`${login.username}:${login.password}`);
+
+        const rawResponse = await fetch(`${login.baseUrl}/participants/${participant.email}`, {
+          headers: {
+            Authorization: `Basic ${basicAuth}`,
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+        });
+        const response = await rawResponse.json();
+        setExtendedData(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchExtendedData(); // Invoke the async function
+  }, [expanded]);
+  // const
+  const cardClickHandler = (event) => {
+    clickHandler(participant.email);
+  };
+
   return (
-    <div className="card">
-      <div className="name-container">
-        <img src="/participant.svg" alt="participant icon" style={{ width: "36px" }} />
-        <div className="name-text">
-          {participant.participant.firstName} {participant.participant.lastName}
+    <div className={`card ${expanded ? "expanded" : ""}`} onClick={cardClickHandler} data-email={participant.email}>
+      <div className="main-details">
+        <div className="name-container">
+          <img className="participant-icon" src="/participant.svg" alt="participant icon" style={{ width: "36px" }} />
+          <div className="name-text">
+            {participant.participant.firstName} {participant.participant.lastName}
+          </div>
+          {expanded && extendedData && <div className="extra-details">Date of birth: {extendedData.details.dob}</div>}
         </div>
+        <div className="email-text">{participant.email}</div>
       </div>
-      <div className="email-text">{participant.email}</div>
-      {/* Add more details as needed */}
+      {expanded && extendedData && (
+        <div className="extra-details">
+          {/* Render extra details here */}
+          <div>Extra Details:</div>
+          <div></div>
+        </div>
+      )}
     </div>
   );
 };
 
 ParticipantCard.propTypes = {
+  login: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    baseUrl: PropTypes.string.isRequired,
+  }).isRequired,
+  expanded: PropTypes.bool.isRequired,
+  clickHandler: PropTypes.func.isRequired,
   participant: PropTypes.shape({
     email: PropTypes.string.isRequired,
     participant: PropTypes.shape({
