@@ -39,18 +39,29 @@ const ParticipantCard = ({ participant, clickHandler, expanded, login }) => {
       <div className="main-details">
         <div className="name-container">
           <img className="participant-icon" src="/participant.svg" alt="participant icon" style={{ width: "36px" }} />
-          <div className="name-text">
-            {participant.participant.firstName} {participant.participant.lastName}
+          <div className="name-text-container">
+            <div className="name-text">
+              {participant.participant.firstName} {participant.participant.lastName}
+            </div>
+            {expanded && extendedData && <div className="extra-details-dob">Date of birth: {extendedData.details.dob}</div>}
           </div>
-          {expanded && extendedData && <div className="extra-details">Date of birth: {extendedData.details.dob}</div>}
         </div>
         <div className="email-text">{participant.email}</div>
       </div>
       {expanded && extendedData && (
-        <div className="extra-details">
-          {/* Render extra details here */}
-          <div>Extra Details:</div>
-          <div></div>
+        <div className="extra-details-container">
+          <div className="extra-details">
+            Home
+            <div className="extra-details-text">City: {extendedData.home.city}</div>
+            <div className="extra-details-text">Country: {extendedData.home.country}</div>
+          </div>
+          <div className="extra-details">
+            Work
+            <div className="extra-details-text">Company Name: {extendedData.work.companyName}</div>
+            <div className="extra-details-text">
+              Salary: {extendedData.work.salary} {extendedData.work.currency}
+            </div>
+          </div>
         </div>
       )}
     </div>

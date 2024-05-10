@@ -4,8 +4,8 @@ import "./ParticipantList.css";
 import ParticipantCard from "./ParticipantCard";
 
 const ParticipantList = () => {
-  // const baseUrl = `https://participant-api.onrender.com`
-  const baseUrl = `http://localhost:3000`;
+  const baseUrl = `https://participant-api.onrender.com`;
+  // const baseUrl = `http://localhost:3000`;
   const username = "admin";
   const password = "P4ssword";
 
