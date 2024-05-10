@@ -27,7 +27,7 @@ const ParticipantCard = ({ participant, clickHandler, expanded, login }) => {
       }
     };
 
-    fetchExtendedData(); // Invoke the async function
+    fetchExtendedData();
   }, [expanded]);
   // const
   const cardClickHandler = () => {

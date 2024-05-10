@@ -14,7 +14,6 @@ const ParticipantList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // Define an async function
       try {
         const basicAuth = btoa(`${username}:${password}`);
 
@@ -32,8 +31,8 @@ const ParticipantList = () => {
       }
     };
 
-    fetchData(); // Invoke the async function
-  }, []); // Empty dependency array indicates the effect runs once on mount
+    fetchData();
+  }, []);
   const participantClickHandler = (email) => {
     setExpandedEmail(email);
     console.log(email);
