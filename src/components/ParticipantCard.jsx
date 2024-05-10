@@ -30,7 +30,7 @@ const ParticipantCard = ({ participant, clickHandler, expanded, login }) => {
     fetchExtendedData(); // Invoke the async function
   }, [expanded]);
   // const
-  const cardClickHandler = (event) => {
+  const cardClickHandler = () => {
     clickHandler(participant.email);
   };
 
@@ -50,17 +50,23 @@ const ParticipantCard = ({ participant, clickHandler, expanded, login }) => {
       </div>
       {expanded && extendedData && (
         <div className="extra-details-container">
-          <div className="extra-details">
-            Home
-            <div className="extra-details-text">City: {extendedData.home.city}</div>
-            <div className="extra-details-text">Country: {extendedData.home.country}</div>
-          </div>
-          <div className="extra-details">
-            Work
-            <div className="extra-details-text">Company Name: {extendedData.work.companyName}</div>
-            <div className="extra-details-text">
-              Salary: {extendedData.work.salary} {extendedData.work.currency}
+          <div className="extra-details-text-container">
+            <div className="extra-details">
+              Home
+              <div className="extra-details-text">City: {extendedData.home.city}</div>
+              <div className="extra-details-text">Country: {extendedData.home.country}</div>
             </div>
+            <div className="extra-details">
+              Work
+              <div className="extra-details-text">Company Name: {extendedData.work.companyName}</div>
+              <div className="extra-details-text">
+                Salary: {extendedData.work.salary} {extendedData.work.currency}
+              </div>
+            </div>
+          </div>
+          <div className="extra-details-icon-container">
+            <img src="/edit.svg" alt="edit icon" style={{ height: "30px" }} />
+            <img src="/delete.svg" alt="edit icon" style={{ height: "30px" }} />
           </div>
         </div>
       )}

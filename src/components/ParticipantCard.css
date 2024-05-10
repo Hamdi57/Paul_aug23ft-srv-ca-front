@@ -55,8 +55,8 @@
 .extra-details-container {
   display: flex;
   width: 100%;
-  align-items: center;
-  justify-content: start;
+  align-items: end;
+  justify-content: space-between;
   gap: 2rem;
   margin: 0;
   font-size: 1rem;
@@ -73,6 +73,20 @@
 .extra-details-text {
   margin: 0;
   font-size: 1rem;
+}
+.extra-details-text-container {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 1rem;
+  padding: 0 2.1rem;
+}
+.extra-details-icon-container {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0 2.1rem;
 }
 .card:hover {
   color: #7a7a77;
